@@ -1,0 +1,12 @@
+require("config.lazy")
+require("core.options")
+require("core.keymaps")
+require("core.colorscheme")
+require("plugins.comment")
+require("plugins.lualine")
+require("plugins.telescope")
+require("plugins.lsp-config")
+require("plugins.completions")
+require("plugins.rich-presence")
+require("plugins.transparent")
+vim.g.strip_whitespace_confirm = 0
