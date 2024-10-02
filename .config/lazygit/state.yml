@@ -1,6 +1,7 @@
 lastupdatecheck: 0
 recentrepos:
 - /home/arthur/Stage/Yak-App
+- /home/arthur/my-dotfiles
 startuppopupversion: 5
 customcommandshistory: []
-hidecommandlog: false
+hidecommandlog: true
