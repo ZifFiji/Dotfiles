@@ -42,6 +42,7 @@ require('lazy').setup({
     -- notification
      'rcarriga/nvim-notify',
 
+    { "folke/which-key.nvim", lazy = true },
     -- add this to your lua/plugins.lua, lua/plugins/init.lua,  or the file you keep your other plugins:
     {
         'numToStr/Comment.nvim',
@@ -64,16 +65,31 @@ require('lazy').setup({
     {"nvim-telescope/telescope-fzf-native.nvim", build = "make"},
     {"nvim-telescope/telescope.nvim", branch = "0.1.x"},
 
-	 {
-	  "nvim-neo-tree/neo-tree.nvim",
-	    branch = "v3.x",
-	    dependencies = {
-	      "nvim-lua/plenary.nvim",
-	      "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
-	      "MunifTanjim/nui.nvim",
-	      -- "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
-	    }
-	  },
+    {
+        "nvim-neo-tree/neo-tree.nvim",
+        branch = "v3.x",
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+            "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
+            "MunifTanjim/nui.nvim",
+            -- "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
+        },
+        opts = {
+            filesystem = {
+                filtered_items = {
+                    visible = true,
+                    show_hidden_count = true,
+                    hide_dotfiles = false,
+                    hide_gitignored = true,
+                    never_show = {},
+                },
+                follow_current_file = {
+            enabled = true,
+             leave_dirs_open = false,
+            },
+            },
+        },
+    },
 
     -- icons
     "kyazdani42/nvim-web-devicons",
@@ -122,7 +138,43 @@ require('lazy').setup({
 
     -- formatter
     {
-      'stevearc/conform.nvim',
+        "stevearc/conform.nvim",
+        event = { "BufReadPre", "BufNewFile" },
+        config = function()
+            local conform = require("conform")
+
+            conform.setup({
+                formatters_by_ft = {
+                    c = { "clang-format" },
+                    cpp = { "clang-format" },
+                    css = { "prettier" },
+                    graphql = { "prettier" },
+                    html = { "prettier" },
+                    javascript = { "prettierd", "prettier" },
+                    javascriptreact = { "prettierd", "prettier" },
+                    json = { "prettier" },
+                    lua = { "stylua" },
+                    markdown = { "markdownlint" },
+                    typescript = { "prettier" },
+                    typescriptreact = { "prettier" },
+                    vue = { "prettier" },
+                    yaml = { "prettier" },
+                },
+                format_on_save = {
+                    lsp_fallback = true,
+                    async = false,
+                    timeout_ms = 1000,
+                },
+            })
+
+            vim.keymap.set({ "n", "v" }, "<leader>tf", function()
+                conform.format({
+                    lsp_fallback = true,
+                    async = false,
+                    timeout_ms = 1000,
+                })
+            end, { desc = "Format file or range (in visual mode)" })
+        end,
     },
     {
       "folke/trouble.nvim",
