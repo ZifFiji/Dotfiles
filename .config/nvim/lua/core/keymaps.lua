@@ -29,3 +29,6 @@ keymap.set("n", "<leader>fn", "<cmd>Telescope help_tags<cr>")
 
 -- lsp
 vim.keymap.set("n", "<space>e", vim.diagnostic.open_float, bufopts)
+
+-- gitsigns
+vim.keymap.set("n", "<leader>gn", "<cmd>Gitsigns toggle_current_line_blame<cr>")

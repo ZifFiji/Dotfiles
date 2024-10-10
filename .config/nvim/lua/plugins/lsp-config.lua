@@ -1,35 +1,34 @@
 require("mason").setup({
-  ensure_installed = { "clang-format", "prettier", "prettierd", "shfmt", "stylua" }
+  ensure_installed = { "prettier", "clang-format", "prettierd" }
 })
 require("mason-lspconfig").setup({
-    ensure_installed = { "lua_ls" , "clangd" , "jedi_language_server", "rust_analyzer", "ts_ls", "eslint", "cssls" }
+  ensure_installed = { "lua_ls", "clangd", "jedi_language_server", "rust_analyzer", "ts_ls", "eslint" }
 })
 
--- set keybinds
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
 require("lspconfig").lua_ls.setup {
-    capabilities = capabilities,
-    settings = {
-        Lua = {
-            diagnostics = {
-                globals = { 'vim' }
-            }
-        }
+  capabilities = capabilities,
+  settings = {
+    Lua = {
+      diagnostics = {
+        globals = { 'vim' }
+      }
     }
+  }
 }
 require("lspconfig").clangd.setup {
-    capabilities = capabilities,
+  capabilities = capabilities,
 }
 require("lspconfig").jedi_language_server.setup {
-    capabilities = capabilities,
+  capabilities = capabilities,
 }
 require("lspconfig").rust_analyzer.setup {
-    capabilities = capabilities,
+  capabilities = capabilities,
 }
 require("lspconfig").ts_ls.setup {
-    capabilities = capabilities,
+  capabilities = capabilities,
 }
 require("lspconfig").eslint.setup {
-    capabilities = capabilities,
+  capabilities = capabilities,
 }

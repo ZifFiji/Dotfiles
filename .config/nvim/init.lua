@@ -9,4 +9,5 @@ require("plugins.lsp-config")
 require("plugins.completions")
 require("plugins.rich-presence")
 require("plugins.transparent")
+require("plugins.conform")
 vim.g.strip_whitespace_confirm = 0
