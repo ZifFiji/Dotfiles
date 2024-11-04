@@ -30,3 +30,9 @@ keymap.set("n", "<leader>fn", "<cmd>Telescope help_tags<cr>")
 
 -- lsp
 vim.keymap.set("n", "<space>e", vim.diagnostic.open_float, bufopts)
+-- Delete to the void register
+keymap.set("n", "<leader>d", '"_d', { desc = "Delete to the void register" })
+keymap.set("v", "<leader>d", '"_d', { desc = "Delete to the void register" })
+
+-- Paste over selection and don't copy
+keymap.set("x", "<leader>p", '"_dP', { desc = "Paste without copying" })
