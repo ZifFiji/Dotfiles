@@ -13,6 +13,9 @@ keymap.set("v", "<Down>", "l")
 keymap.set("v", "<Right>", "k")
 keymap.set("v", "<Up>", "h")
 
+-- better scroll
+keymap.set("n", "<ScrollWheelUp>", "k", { desc = "Move up on scroll wheel up" })
+keymap.set("n", "<ScrollWheelDown>", "j", { desc = "Move down on scroll wheel down" })
 
 -- nvim-tree
 

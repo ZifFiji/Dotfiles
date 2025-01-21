@@ -31,6 +31,7 @@ require('lazy').setup({
   { "savq/melange-nvim" },
   "Abstract-IDE/Abstract-cs",
   { "Mofiqul/vscode.nvim", as = "vscode" },
+  "navarasu/onedark.nvim",
   "rebelot/kanagawa.nvim",
   { "catppuccin/nvim",     as = "catppuccin", priority = 1000 },
   "shaunsingh/nord.nvim",
@@ -42,6 +43,8 @@ require('lazy').setup({
   -- notification
   -- 'rcarriga/nvim-notify',
 
+  "anuvyklack/windows.nvim",
+
   {
     "karb94/neoscroll.nvim",
     config = function()
@@ -49,7 +52,6 @@ require('lazy').setup({
     end
   },
 
-  'brenoprata10/nvim-highlight-colors',
   -- add this to your lua/plugins.lua, lua/plugins/init.lua,  or the file you keep your other plugins:
   {
     'numToStr/Comment.nvim',
@@ -122,6 +124,9 @@ require('lazy').setup({
       --   If not available, we use `mini` as the fallback
       -- "rcarriga/nvim-notify",
     }
+  },
+  {
+    "brenoprata10/nvim-highlight-colors"
   },
   {
     "folke/which-key.nvim",
@@ -299,6 +304,30 @@ require('lazy').setup({
     },
   },
 
+  {
+    "anuvyklack/windows.nvim",
+    dependencies = {
+      "anuvyklack/middleclass",
+      "anuvyklack/animation.nvim",
+    },
+    config = function()
+      local windows = require("windows")
+
+      vim.o.winwidth = 10
+      vim.o.winminwidth = 10
+      vim.o.equalalways = false
+      windows.setup()
+    end,
+  },
+
+  -- For description generator
+  {
+    "danymat/neogen",
+    config = true,
+    -- Uncomment next line if you want to follow only stable versions
+    -- version = "*"
+  },
+
   -- {
   --   'romgrk/barbar.nvim',
   --   dependencies = {
@@ -315,9 +344,9 @@ require('lazy').setup({
   --   version = '^1.0.0', -- optional: only update when a new 1.x version is released
   -- },
   -- formatter
-  {
-    'stevearc/conform.nvim',
-  },
+  -- {
+  --   'stevearc/conform.nvim',
+  -- },
   --clang
   "rhysd/vim-clang-format",
 })

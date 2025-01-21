@@ -1,8 +1,8 @@
 require("mason").setup({
-  ensure_installed = { "prettier", "clang-format", "prettierd" }
+  ensure_installed = { "clang-format" }
 })
 require("mason-lspconfig").setup({
-  ensure_installed = { "lua_ls", "clangd", "jedi_language_server", "rust_analyzer", "ts_ls", "eslint" }
+  ensure_installed = { "lua_ls", "clangd", "jedi_language_server", "rust_analyzer" }
 })
 
 local keymap = vim.keymap;
@@ -79,8 +79,5 @@ require("lspconfig").rust_analyzer.setup {
   capabilities = capabilities,
 }
 require("lspconfig").ts_ls.setup {
-  capabilities = capabilities,
-}
-require("lspconfig").eslint.setup {
   capabilities = capabilities,
 }
